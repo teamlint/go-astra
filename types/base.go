@@ -5,6 +5,7 @@ package types
 // Docs is a comments in golang syntax above entity declaration.
 // Each block comment is counted as one.
 type Base struct {
-	Name string   `json:"name,omitempty"`
-	Docs []string `json:"docs,omitempty"`
+	Name     string   `json:"name,omitempty"`
+	Docs     []string `json:"docs,omitempty"`
+	Comments []string `json:"comments,omitempty"`
 }

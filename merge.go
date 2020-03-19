@@ -1,6 +1,6 @@
 package astra
 
-import "github.com/vetcher/go-astra/types"
+import "github.com/teamlint/go-astra/types"
 
 func mergeImports(bunch ...[]*types.Import) []*types.Import {
 	set := make(map[string]*types.Import)

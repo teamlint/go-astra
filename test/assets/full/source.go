@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	// This is documentation comment for package import
-	thisisstubalias "github.com/vetcher/go-astra/test/assets/full/thisisstubpackage" // This is inline comment for package import
+	thisisstubalias "github.com/teamlint/go-astra/test/assets/full/thisisstubpackage" // This is inline comment for package import
 )
 
 // This is a comment for string constant

@@ -3,7 +3,7 @@ Fetch information about go source file easily.
 
 ## Install
 ``` bash
-go get -u github.com/vetcher/go-astra
+go get -u github.com/teamlint/go-astra
 ```
 
 ## Description
@@ -57,7 +57,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/vetcher/go-astra"
+	"github.com/teamlint/go-astra"
 )
 
 func main() {
@@ -66,12 +66,7 @@ func main() {
 		panic(err)
 	}
 	path := filepath.Join(currentDir, "./test/service.go")
-	fset := token.NewFileSet()
-	f, err := parser.ParseFile(fset, path, nil, parser.ParseComments|parser.AllErrors)
-	if err != nil {
-		panic(fmt.Errorf("error when parse file: %v", err))
-	}
-	file, err := astra.ParseFile(f)
+	file, err := astra.ParseFile(path)
 	if err != nil {
 		fmt.Println(err)
 	}

@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/vetcher/go-astra"
+	"github.com/teamlint/go-astra"
 )
 
 const (

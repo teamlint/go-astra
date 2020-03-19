@@ -13,8 +13,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/fatih/structtag"
-	"github.com/vetcher/go-astra/types"
+	"github.com/teamlint/go-astra/types"
+	"github.com/teamlint/structtag"
 )
 
 var (
@@ -54,8 +54,9 @@ func ParseAstFile(file *ast.File, options ...Option) (*types.File, error) {
 	opt := concatOptions(options)
 	f := &types.File{
 		Base: types.Base{
-			Name: file.Name.Name,
-			Docs: parseComments(file.Doc, opt),
+			Name:     file.Name.Name,
+			Docs:     parseComments(file.Doc, opt),
+			Comments: parseCommentFromSources(opt, file.Comments...),
 		},
 	}
 	err := parseTopLevelDeclarations(file.Decls, f, opt)

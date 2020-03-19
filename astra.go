@@ -5,12 +5,11 @@ import (
 	"go/ast"
 	astparser "go/parser"
 	"go/token"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
 
-	"github.com/vetcher/go-astra/types"
+	"github.com/teamlint/go-astra/types"
 )
 
 // Opens and parses file by name and return information about it.
@@ -58,31 +57,31 @@ func MergeFiles(files []*types.File) (*types.File, error) {
 
 // Parses all .go files from directory.
 // Deprecated: use GetPackage instead
-func ParsePackage(path string, options ...Option) ([]*types.File, error) {
-	p, err := filepath.Abs(path)
-	if err != nil {
-		return nil, fmt.Errorf("can not filepath.Abs: %v", err)
-	}
-	files, err := ioutil.ReadDir(p)
-	if err != nil {
-		return nil, fmt.Errorf("can not read dir: %v", err)
-	}
-	var parsedFiles []*types.File
-	for _, file := range files {
-		if file.IsDir() {
-			continue
-		}
-		if !strings.HasSuffix(file.Name(), ".go") {
-			continue
-		}
-		f, err := ParseFile(p+"/"+file.Name(), options...)
-		if err != nil {
-			return nil, fmt.Errorf("can not parse %s: %v", file.Name(), err)
-		}
-		parsedFiles = append(parsedFiles, f)
-	}
-	return parsedFiles, nil
-}
+// func ParsePackage(path string, options ...Option) ([]*types.File, error) {
+// 	p, err := filepath.Abs(path)
+// 	if err != nil {
+// 		return nil, fmt.Errorf("can not filepath.Abs: %v", err)
+// 	}
+// 	files, err := ioutil.ReadDir(p)
+// 	if err != nil {
+// 		return nil, fmt.Errorf("can not read dir: %v", err)
+// 	}
+// 	var parsedFiles []*types.File
+// 	for _, file := range files {
+// 		if file.IsDir() {
+// 			continue
+// 		}
+// 		if !strings.HasSuffix(file.Name(), ".go") {
+// 			continue
+// 		}
+// 		f, err := ParseFile(p+"/"+file.Name(), options...)
+// 		if err != nil {
+// 			return nil, fmt.Errorf("can not parse %s: %v", file.Name(), err)
+// 		}
+// 		parsedFiles = append(parsedFiles, f)
+// 	}
+// 	return parsedFiles, nil
+// }
 
 func GetPackage(path string, options ...Option) (*types.File, error) {
 	p, err := filepath.Abs(path)
